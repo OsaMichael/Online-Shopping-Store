@@ -1,0 +1,18 @@
+﻿@model FoodPalace.Web.Models.ProductsListViewModel
+@{
+    ViewBag.Title = "Products";
+}
+
+@foreach (var p in Model.Products)
+{
+    @Html.Partial("ProductSummary", p)
+}
+
+
+@*<div class="btn-group pull-right">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
+    new { page = x, category = Model.CurrentCategory }))
+</div>*@
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>

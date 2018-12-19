@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - F_Plaza</title>
+
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @RenderSection("scripts", required: false)
+
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse" role="navigation">
+        <a class="navbar-brand" href="#">
+
+            @*To make it MOBILE*@
+            <span class="F_Plaza-xs">New F_Plaza </span>
+            <div class="visible-xs">New</div>
+            <div class="visible-xs">F_Plaza</div>
+        </a>
+
+        <ul class="nav navbar-nav">
+
+            <li>@Html.ActionLink("About", "About", "Home")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    
+        </ul>
+        @Html.Partial("_LoginPartial")
+
+        
+        @Html.Action("Summary", "Cart")
+    </div>
+    <div class="row panel">
+        <div id="categoris" class="col-lg-3">
+            @Html.Action("Menu", "Nav")
+        </div>
+        <div class="col-lg-7">
+
+            @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        @*<li>@Html.ActionLink("Employees", "index", "Employee")</li>
+                        <li>@Html.ActionLink("Roles", "index", "Role")</li>
+                        <li>@Html.ActionLink("Users", "Users", "User")</li>*@
+            @*</ul>
+                        @Html.Partial("_LoginPartial")
+                    </div>
+
+                </div>
+            </div>*@
+
+            @*<div class="container body-content">*@
+            @RenderBody()
+        </div>
+                <hr />
+                @*<footer>
+                    <p>&c@*opy; @DateTime.Now.Year @*- My ASP.NET Application*@</p>
+                @*</footer>*@
+            </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+            @RenderSection("Script", false)
+            <script>
+                $(function () {
+                    //Initiate Page Loader
+                    $("html").removeClass("loading");
+
+
+                    ///Application Successful
+                    var succ = $('#success').val();
+                    if (succ !== "" && succ !== null && succ !== undefined) {
+                        toastr.success(succ);
+                    }
+
+                    ///Registration Error
+                    var err = $('#error').val();
+                    if (err !== "" && err !== null && err !== undefined) {
+                        toastr.error(err);
+                    }
+
+                });
+
+            </script>
+</body>
+</html>

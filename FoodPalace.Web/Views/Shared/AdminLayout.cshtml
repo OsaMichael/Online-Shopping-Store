@@ -1,0 +1,41 @@
+﻿@using FoodPalace.Web.Controllers
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+    <div>
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
+
+        @*logout code here below*@
+        @{
+            var userName = HttpContext.Current.User.Identity.Name;
+            if (userName != "")
+            {
+                <h3>
+                    @Html.ActionLink(" New F_Plaza", "List", "Product")
+                    <span class="btn-info btn pull-right">
+                        @Html.ActionLink(HttpContext.Current.User.Identity.Name + " - Logout", "LogOff", "Account")
+                    </span>
+                </h3>
+
+            }
+        }
+
+        @RenderBody()
+
+    </div>
+</body>
+</html>
